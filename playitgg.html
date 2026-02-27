@@ -3,229 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asshosting | Playit.gg Setup Guide</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700;800&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <title>Bluezone | Playit.gg Setup</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Inter:wght@400;600&family=Fira+Code&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/92aefae731.js" crossorigin="anonymous"></script>
-
     <style>
         :root {
-            --bg: #050505;
-            --primary: #8b5cf6;
-            --secondary: #3b82f6;
-            --text-main: #ffffff;
-            --text-dim: #a1a1aa;
-            --border: rgba(255, 255, 255, 0.08);
-            --glass: rgba(255, 255, 255, 0.03);
-            --code-bg: #111111;
-            --font-heading: 'Bricolage Grotesque', sans-serif;
-            --font-body: 'Inter', sans-serif;
-            --font-code: 'Fira Code', monospace;
+            --bg: #020617;
+            --primary: #3b82f6;
+            --border: rgba(59, 130, 246, 0.15);
+            --glass: rgba(15, 23, 42, 0.5);
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            background-color: var(--bg);
-            color: var(--text-main);
-            font-family: var(--font-body);
-            line-height: 1.7;
-        }
-
-        /* --- BACKGROUND --- */
-        .mesh-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 100% 0%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
-            z-index: -1;
-        }
-
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-
-        /* --- NAV --- */
-        .navbar {
-            padding: 20px 0; border-bottom: 1px solid var(--border);
-            background: rgba(5, 5, 5, 0.8); backdrop-filter: blur(10px);
-            position: sticky; top: 0; z-index: 100;
-        }
-        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-family: var(--font-heading); font-weight: 800; font-size: 1.2rem; text-decoration: none; color: white; }
-
-        /* --- LAYOUT --- */
-        .guide-wrapper {
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            gap: 50px;
-            padding: 60px 0;
-        }
-
-        /* --- SIDEBAR --- */
-        .sidebar { position: sticky; top: 100px; height: fit-content; }
-        .sidebar h4 { font-family: var(--font-heading); text-transform: uppercase; font-size: 11px; color: var(--primary); letter-spacing: 2px; margin-bottom: 20px; }
-        .sidebar-links { list-style: none; }
-        .sidebar-links a { 
-            text-decoration: none; color: var(--text-dim); font-size: 14px; display: block; 
-            padding: 10px 0; transition: 0.2s; border-left: 2px solid transparent; padding-left: 15px;
-        }
-        .sidebar-links a:hover { color: white; border-left-color: var(--border); }
-        .sidebar-links a.active { color: var(--primary); border-left-color: var(--primary); font-weight: 700; }
-
-        /* --- CONTENT --- */
-        .content-card { background: var(--glass); border: 1px solid var(--border); border-radius: 24px; padding: 50px; }
-        h1 { font-family: var(--font-heading); font-size: 3rem; margin-bottom: 15px; }
-        .subtitle { color: var(--text-dim); margin-bottom: 40px; font-size: 1.1rem; }
-        
-        .step { margin-bottom: 50px; }
-        .step-num { 
-            background: var(--primary); color: white; width: 30px; height: 30px; 
-            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
-            font-size: 14px; font-weight: 800; margin-bottom: 20px;
-        }
-        h2 { font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 15px; }
-        p { color: var(--text-dim); margin-bottom: 20px; }
-
-        /* --- CODE & BOXES --- */
-        code { font-family: var(--font-code); background: var(--code-bg); padding: 3px 8px; border-radius: 6px; color: #f472b6; font-size: 0.9em; }
-        .code-block {
-            background: var(--code-bg); border: 1px solid var(--border);
-            padding: 20px; border-radius: 12px; font-family: var(--font-code);
-            font-size: 14px; color: #e2e8f0; margin: 20px 0; position: relative;
-            overflow-x: auto;
-        }
-        .alert {
-            background: rgba(59, 130, 246, 0.1); border-left: 4px solid var(--secondary);
-            padding: 20px; border-radius: 8px; margin: 20px 0; color: #93c5fd; font-size: 14px;
-        }
-
-        .btn {
-            background: var(--primary); color: white; padding: 12px 25px; 
-            border-radius: 10px; text-decoration: none; font-weight: 700; 
-            font-size: 14px; display: inline-block; transition: 0.3s;
-        }
-        .btn:hover { transform: translateY(-2px); opacity: 0.9; }
-
-        @media (max-width: 850px) {
-            .guide-wrapper { grid-template-columns: 1fr; }
-            .sidebar { display: none; }
-            .content-card { padding: 30px; }
-            h1 { font-size: 2.2rem; }
-        }
+        body { background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; line-height: 1.6; }
+        .navbar { padding: 20px 0; border-bottom: 1px solid var(--border); background: rgba(2, 6, 23, 0.8); backdrop-filter: blur(10px); position: sticky; top: 0; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+        .content { margin-top: 60px; background: var(--glass); padding: 50px; border-radius: 24px; border: 1px solid var(--border); }
+        h1 { font-family: 'Bricolage Grotesque'; font-size: 3rem; margin-bottom: 20px; }
+        .step { margin-bottom: 40px; }
+        .btn { background: var(--primary); color: white; padding: 12px 25px; border-radius: 10px; text-decoration: none; font-weight: 700; display: inline-block; }
+        code { background: #000; padding: 4px 8px; border-radius: 4px; color: #60a5fa; font-family: 'Fira Code'; }
     </style>
 </head>
 <body>
-
-    <div class="mesh-bg"></div>
-
     <nav class="navbar">
-        <div class="container nav-flex">
-            <a href="index.html" class="logo">ASS<span style="color: var(--primary);">HOSTING</span></a>
-            <a href="https://gp.asshost.qzz.io" class="btn" style="padding: 8px 15px; font-size: 11px;">Back to Panel</a>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <a href="index.html" style="text-decoration: none; color: white; font-weight: 800; display: flex; align-items: center; gap: 10px;">
+                <img src="icon.png" width="24"> BLUEZONE
+            </a>
+            <a href="https://gp.asshost.qzz.io" class="btn" style="font-size: 12px;">BACK TO PANEL</a>
         </div>
     </nav>
 
-    <main class="container">
-        <div class="guide-wrapper">
-            
-            <aside class="sidebar">
-                <h4>Setup Steps</h4>
-                <ul class="sidebar-links">
-                    <li><a href="#intro" class="active">Introduction</a></li>
-                    <li><a href="#download">1. Download Plugin</a></li>
-                    <li><a href="#upload">2. Upload to Panel</a></li>
-                    <li><a href="#config">3. Linking Account</a></li>
-                    <li><a href="#tunnel">4. Creating Tunnel</a></li>
-                </ul>
-            </aside>
+    <div class="container">
+        <div class="content">
+            <h1>Playit.gg <span style="color: var(--primary)">Setup</span></h1>
+            <p style="color: #94a3b8; margin-bottom: 40px;">Official guide to port-forwarding your Bluezone server using Playit.gg tunnels.</p>
 
-            <article class="content-card">
-                
-                <section id="intro" class="step">
-                    <h1>Playit.gg <span style="color: var(--primary);">Setup</span></h1>
-                    <p class="subtitle">Learn how to port forward your Minecraft server on Asshosting using Playit.gg tunnels.</p>
-                    <div class="alert">
-                        <i class="fa-solid fa-circle-info"></i> &nbsp; Playit.gg is the best way to bypass CGNAT or avoid sharing your server's home/node IP directly.
-                    </div>
-                </section>
+            <div class="step">
+                <h2>1. Install Plugin</h2>
+                <p>Upload the <code>playit-minecraft.jar</code> to your <code>/plugins</code> folder via the Bluezone File Manager.</p>
+            </div>
 
-                <section id="download" class="step">
-                    <div class="step-num">1</div>
-                    <h2>Download the Plugin</h2>
-                    <p>First, you need the official Playit.gg Bukkit/Spigot plugin. This allows the tunnel to run directly inside your Minecraft process.</p>
-                    <a href="https://playit.gg/download" target="_blank" class="btn">
-                        <i class="fa-solid fa-download"></i> &nbsp; Visit Playit Download Page
-                    </a>
-                    <p style="margin-top: 15px; font-size: 0.9rem;">Select the <b>Minecraft Plugin (.jar)</b> option.</p>
-                </section>
-
-                <section id="upload" class="step">
-                    <div class="step-num">2</div>
-                    <h2>Upload to Asshosting Panel</h2>
-                    <p>Go to your server dashboard and follow these steps:</p>
-                    <ul style="color: var(--text-dim); margin-left: 20px; margin-bottom: 20px;">
-                        <li>Stop your server.</li>
-                        <li>Click on the <b>Files</b> tab.</li>
-                        <li>Navigate to the <code>/plugins</code> folder.</li>
-                        <li>Upload the <code>playit-minecraft-xxx.jar</code> file you just downloaded.</li>
-                        <li><b>Start</b> your server.</li>
-                    </ul>
-                </section>
-
-                <section id="config" class="step">
-                    <div class="step-num">3</div>
-                    <h2>Linking your Account</h2>
-                    <p>Once the server starts, look at the <b>Console</b>. You will see a message from Playit.gg with a unique link.</p>
-                    <div class="code-block">
-                        [playit.gg] Visit this link to link your server: <br>
-                        <span style="color: var(--secondary);">https://playit.gg/claim/xxxx-xxxx-xxxx</span>
-                    </div>
-                    <p>Copy that link into your browser. If you don't see it, type <code>playit setup</code> in the console.</p>
-                </section>
-
-                <section id="tunnel" class="step">
-                    <div class="step-num">4</div>
-                    <h2>Creating the Tunnel</h2>
-                    <p>After clicking the link and logging in:</p>
-                    <p>1. Click <b>Add Tunnel</b>.<br>
-                    2. Select <b>Minecraft Java</b> (or Bedrock if applicable).<br>
-                    3. Set the local port to <code>25565</code>.<br>
-                    4. Click <b>Create Tunnel</b>.</p>
-                    
-                    <div class="alert" style="background: rgba(139, 92, 246, 0.1); border-color: var(--primary); color: #ddd;">
-                        <strong>Success!</strong> Your server is now online. You will be given a custom IP like <code>random-words.playit.gg</code>. Give this to your friends!
-                    </div>
-                </section>
-
-            </article>
+            <div class="step">
+                <h2>2. Link Account</h2>
+                <p>Start your server and check the <b>Console</b> for your unique linking URL.</p>
+            </div>
         </div>
-    </main>
-
-    <footer style="padding: 40px 0; text-align: center; border-top: 1px solid var(--border); font-size: 12px; color: #444;">
-        <div class="container">
-            <p>&copy; 2026 Asshosting Infrastructure. Not affiliated with Mojang AB.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Intersection Observer to highlight sidebar links on scroll
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.sidebar-links a');
-
-        window.addEventListener('scroll', () => {
-            let current = "";
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 150) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(a => {
-                a.classList.remove('active');
-                if (a.getAttribute('href').includes(current)) {
-                    a.classList.add('active');
-                }
-            });
-        });
-    </script>
+    </div>
 </body>
 </html>
